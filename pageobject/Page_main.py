@@ -36,7 +36,7 @@ class Page_main(ly):
     def IntoModule(self, module):
         '''进入模块'''
         # 等待时长10秒，默认0.5秒询问一次
-        WebDriverWait(self.driver, 10).until(lambda x: x.find_element(self.loginAccount_loc))
+        # WebDriverWait(self.driver, 10).until(lambda x: x.find_element(self.loginAccount_loc))
 
         if (module == "电动车备案登记"):
         #  '''横向导航菜单：电动车管理'''

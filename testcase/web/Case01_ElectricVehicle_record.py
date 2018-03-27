@@ -61,18 +61,20 @@ class add_ElectricVehicle_record(unittest.TestCase):
         self.EVRecord.select_purchasedate()   # 购车日期
         self.EVRecord.click_save()   # 保存
         # 判断是否新建成功
-        self.assertTrue(self.Login.is_text_in_element(self.Page_main.alert_text, "新增成功", str(self.Login.get_text(self.Page_main.alert_text))))
+        # self.assertTrue(self.Login.is_text_in_element(self.Page_main.alert_text, "新增成功", str(self.Login.get_text(self.Page_main.alert_text))))
+        print self.Page_main.alert_text
+
         # 确定
-        self.EVRecord.click_confirm()   # 确定
+        # self.EVRecord.click_confirm()   # 确定
         log.info('-------新增公司    用例结束-------')
         # self.driver.switch_to.default_content()
 
 
 
-    @classmethod
-    def tearDownClass(self):
-        # 关闭浏览器
-        self.driver.quit()
+    # @classmethod
+    # def tearDownClass(self):
+    #     # 关闭浏览器
+    #     self.driver.quit()
 
 # 执行测试主函数
 if __name__ == '__main__':

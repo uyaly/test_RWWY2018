@@ -1,7 +1,7 @@
 URL: "http://192.168.3.54:14010/iot/login"
 PASSWORD: '000000'
 ADMIN: system
-chipId: "596051"
+chipId: "59999"
 alarmId: ""
 PHONE: '18062427385'
 PLATENUMBER: "鄂L12345"
