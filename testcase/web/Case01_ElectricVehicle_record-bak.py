@@ -5,8 +5,7 @@ import ddt
 from selenium import webdriver
 from selenium.webdriver.support.select import Select
 from pageobject.Page_Login import Page_Login
-from pageobject.Navigat import Page_main
-from pageobject.Page_ElectricVehicle_record import Page_main
+from pageobject.Page_main import Page_main
 from utils.config import Config
 from utils.log1 import Log
 import time

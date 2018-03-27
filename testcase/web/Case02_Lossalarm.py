@@ -13,8 +13,8 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 log = Log()
 @ddt.ddt
-class addcompany(unittest.TestCase):
-    u'''管理员登录'''
+class add_LossAlarm(unittest.TestCase):
+    u'''新增电动车丢失报警'''
 
     @classmethod
     def setUpClass(self):
@@ -59,6 +59,8 @@ class addcompany(unittest.TestCase):
         self.driver.find_elements("class name", 'combo-arrow')[4].click()  # 区域-区
         self.driver.find_element("id", '_easyui_combobox_i14_0').click()  # 下拉选第一项
         self.driver.find_element("id", 'save_addPetFile').click() # 保存
+        self.assertTrue(self.l.is_text_in_element(self.A.loginAccount_loc, "系统管理员", "-------管理员登录  失败-------"))
+        log.info("-------管理员登录  用例结束-------")
         self.driver.find_element("link text", u'确定').click()  # 确定
 
 
