@@ -107,20 +107,20 @@ class ly(object):
         '''
         element = self.find_element(locator)
         element.send_keys(text)
-    def is_text_in_element1(self, locator, text, timeout=10):
-        '''
-        判断文本在元素里,没定位到元素返回False，定位到返回判断结果布尔值
-        result = driver.text_in_element(locator, text)
-        '''
-        try:
-            result = WebDriverWait(self.driver, timeout, 1).until(EC.text_to_be_present_in_element(locator, text))
-        except TimeoutException:
-            print "元素没定位到："+str(locator)
-            return False
-        else:
-            return result
+    # def is_text_in_element1(self, locator, text, timeout=10):
+    #     '''
+    #     判断文本在元素里,没定位到元素返回False，定位到返回判断结果布尔值
+    #     result = driver.text_in_element(locator, text)
+    #     '''
+    #     try:
+    #         result = WebDriverWait(self.driver, timeout, 1).until(EC.text_to_be_present_in_element(locator, text))
+    #     except TimeoutException:
+    #         print "元素没定位到："+str(locator)
+    #         return False
+    #     else:
+    #         return result
 
-    def is_text_in_element(self, locator, text, mmm, timeout=10):
+    def is_text_in_element(self, locator, text, msg, timeout=10):
         '''(ly增加了msg)
         判断文本在元素里,没定位到元素返回False，定位到返回判断结果布尔值
         result = driver.text_in_element(locator, text)
@@ -128,7 +128,7 @@ class ly(object):
         try:
             result = WebDriverWait(self.driver, timeout, 1).until(EC.text_to_be_present_in_element(locator, text))
         except TimeoutException:
-            print u"元素没定位到："+str(locator) + u"原因是:" +mmm
+            print u"元素没定位到："+str(locator) + u"原因是:" + msg
             return False
         else:
             return result

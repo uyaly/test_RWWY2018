@@ -4,45 +4,106 @@ from utils.config import Config
 from utils.ly_selenium import ly  # 导入4.11二次封装的类
 from selenium.webdriver.support.wait import WebDriverWait
 import time
-class Page_main(ly):
+class ElectricVehicle_record(ly):
     # 定位器，定位页面元素
     # 列表按钮
     add_button = ("xpath", ".//*[@id='searchForm']/button[2]")
     # 新增页面
-    telephone = ("id", 'telephoneForRegister')  # 手机号
-    chipId = ("name", 'chipId')  # 芯片编号
-    Installpoint = ("class name", 'combo-arrow')  # 安装点
-    Installpoint1 = ("id", '_easyui_combobox_i15_0')  # 安装点下拉选第一项
-    region2 = ("class name", 'combo-arrow')  # 区域-市
-    region21 = ("id", '_easyui_combobox_i21_0')  # 下拉选第一项
-    region3 = ("class name", 'combo-arrow')  # 区域-区
-    region31 = ("id", '_easyui_combobox_i22_0')  # 下拉选第一项
-    platenumber = ("name", 'vehicleIdmunber')  # 车牌号
-    VIN = ("name", 'frameCode')  # 车架号
-    type = ("class name", 'combo-arrow')  # 车辆类型
-    type1 = ("id", '_easyui_combobox_i16_0')  # 下拉选第一项
-    brand = ("class name", 'combo-arrow')  # 车辆品牌
-    brand1 = ("id", '_easyui_combobox_i18_0')  # 下拉选第一项
-    color = ("class name", 'combo-arrow')  # 车辆颜色
-    color1 = ("id", '_easyui_combobox_i17_0')  # 下拉选第一项
-    purchasedate = ("class name", 'combo-arrow')  # 购车日期
-    purchasedate1 = ("link text", u'今天')  # 购车日期-今天
+    telephone_loc = ("id", 'telephoneForRegister')  # 手机号
+    chipId_loc = ("name", 'chipId')  # 芯片编号
+
+    queue_loc = ("class name", "combo-arrow")  # 下拉队列
+
+    # Installpoint_loc = ("class name", 'combo-arrow')  # 安装点
+    Installpoint1_loc = ("id", '_easyui_combobox_i15_0')  # 安装点下拉选第一项
+    # region2_loc = ("class name", 'combo-arrow')  # 区域-市
+    region21_loc = ("id", '_easyui_combobox_i21_0')  # 下拉选第一项
+    # region3_loc = ("class name", 'combo-arrow')  # 区域-区
+    region31_loc = ("id", '_easyui_combobox_i22_0')  # 下拉选第一项
+    platenumber_loc = ("name", 'vehicleIdmunber')  # 车牌号
+    VIN_loc = ("name", 'frameCode')  # 车架号
+    # type_loc = ("class name", 'combo-arrow')  # 车辆类型
+    type1_loc = ("id", '_easyui_combobox_i16_0')  # 下拉选第一项
+    # brand_loc = ("class name", 'combo-arrow')  # 车辆品牌
+    brand1_loc = ("id", '_easyui_combobox_i18_0')  # 下拉选第一项
+    # color_loc = ("class name", 'combo-arrow')  # 车辆颜色
+    color1_loc = ("id", '_easyui_combobox_i17_0')  # 下拉选第一项
+    # purchasedate_loc = ("class name", 'combo-arrow')  # 购车日期
+    purchasedate1_loc = ("link text", u'今天')  # 购车日期-今天
     save_button = ("id", 'saveBtn')  # 保存
     confirm_button = ("link text", u'确定')  # 确定
 
     # 弹出窗口文字
     alert_text = ("class name", "messager-body")
 
+    def input_telephone(self, telephone):
+        '''输入手机号'''
+        self.send_keys(self.telephone_loc, telephone)
+
+    def input_chipId(self, chipId):
+        '''输入芯片编号'''
+        self.send_keys(self.chipId_loc, chipId)
+
+    def select_Installpoint(self):
+        '''选择安装点'''
+        self.find_elements(self.queue_loc)[5].click()
+        self.click(self.Installpoint1_loc)
+
+
+    def select_region2(self):
+        '''选择区域-市'''
+        # self.select_by_index(self.region2_loc[7], num)
+        self.find_elements(self.queue_loc)[7].click()
+        self.click(self.region21_loc)
+
+    def select_region3(self):
+        '''选择区域-区'''
+        # self.select_by_index(self.region3_loc[8], num)
+        self.find_elements(self.queue_loc)[8].click()
+        self.click(self.region31_loc)
+
+    def input_platenumber(self, platenumber):
+        '''输入车牌号'''
+        self.send_keys(self.platenumber_loc, platenumber)
+
+    def input_VIN(self, VIN):
+        '''输入车架号'''
+        self.send_keys(self.VIN_loc, VIN)
+
+    def select_type(self):
+        '''选择车辆类型'''
+        # self.select_by_index(self.type_loc[9], num)
+        self.find_elements(self.queue_loc)[9].click()
+        self.click(self.type1_loc)
+
+    def select_brand(self):
+        '''选择车辆品牌'''
+        # self.select_by_index(self.brand_loc[10], num)
+        self.find_elements(self.queue_loc)[10].click()
+        self.click(self.brand1_loc)
+
+    def select_purchasedate(self):
+        '''选择购车日期'''
+        # self.select_by_index(self.purchasedate_loc[11], num)
+        self.find_elements(self.queue_loc)[11].click()
+        self.click(self.purchasedate1_loc)
+
+    def select_color(self):
+        '''选择车辆颜色'''
+        # self.select_by_index(self.color_loc[12], num)
+        self.find_elements(self.queue_loc)[12].click()
+        self.click(self.color1_loc)
+
     def click_add(self):
-        '''新建'''
+        '''点击新建'''
         self.click(self.add_button)
 
     def click_save(self):
-        '''保存'''
+        '''点击保存'''
         self.click(self.save_button)
 
     def click_confirm(self):
-        '''确定'''
+        '''点击确定'''
         self.click(self.confirm_button)
 
     # def input_account(self, username):

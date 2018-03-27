@@ -14,15 +14,19 @@ class Page_main(ly):
     QUERY_Button = ("class name", 'query')
     # 删除一行
     row_loc = ("class name", "datagrid-row")    # 待删行
-    save_button = ("id", 'saveBtn')    # 保存
-    cancel_button = ("id", 'cancelBtn')    # 取消
-    ok_button = ("link text", '确定')    # 确定
+    # save_button = ("id", 'saveBtn')    # 保存
+    # cancel_button = ("id", 'cancelBtn')    # 取消
+    # ok_button = ("link text", '确定')    # 确定
     # 模块
-    ElectricVehicle_Monitor = ("link text", '电动车监控')    # 电动车备案登记
-    ElectricVehicle_manage = ("link text", '电动车管理')    # 电动车备案登记panel-with-icon
-    ElectricVehicle_record = ("link text", '电动车备案登记')    # 电动车备案登记panel-with-icon
-    ElectricVehicle_alarm = ("link text", '电动车丢失报警')    # 电动车备案登记panel-with-icon
-    ElectricVehicle_Blacklist = ("link text", '丢失电动车')    # 电动车备案登记panel-with-icon
+    ElectricVehicle_Monitor = ("xpath", ".//*[@id='mainlayout_body']/div[1]/div/div[2]/ul/li[2]/a")   # 横向导航菜单：电动车管理
+    ElectricVehicle_manage = ("xpath", ".//*[@id='accordion']/div[2]/div[1]/div[1]")    # 电动车管理
+    ElectricVehicle_record = ("xpath", ".//*[@id='accordion']/div[2]/div[2]/ul/li[2]/a")    # 电动车备案登记
+    ElectricVehicle_LossAlarm = ("xpath", ".//*[@id='accordion']/div[2]/div[2]/ul/li[3]/a")    # 电动车丢失报警
+    ElectricVehicle_Blacklist = ("xpath", ".//*[@id='accordion']/div[2]/div[2]/ul/li[4]/a")    # 丢失电动车
+
+    def Into_ElectricVehicle_manage(self):
+        '''横向导航菜单：电动车管理'''
+        self.click(self.ElectricVehicle_Monitor)
 
     # 查询
     account_loc = ("id", 'a_query')
@@ -32,23 +36,18 @@ class Page_main(ly):
     def IntoModule(self, module):
         '''进入模块'''
         # 等待时长10秒，默认0.5秒询问一次
-        # WebDriverWait(self.driver, 10).until(lambda x: x.find_element_by_id("loginOut"))
+        WebDriverWait(self.driver, 10).until(lambda x: x.find_element(self.loginAccount_loc))
 
         if (module == "电动车备案登记"):
-            self.click(self.ElectricVehicle_Monitor)
-            time.sleep(1)
+        #  '''横向导航菜单：电动车管理'''
             self.click(self.ElectricVehicle_manage)
             self.click(self.ElectricVehicle_record)
 
         elif (module == "电动车丢失报警"):
-            self.click(self.ElectricVehicle_Monitor)
-            time.sleep(1)
             self.click(self.ElectricVehicle_manage)
-            self.click(self.ElectricVehicle_alarm)
+            self.click(self.ElectricVehicle_LossAlarm)
 
         elif (module == "丢失电动车"):
-            self.click(self.ElectricVehicle_Monitor)
-            time.sleep(1)
             self.click(self.ElectricVehicle_manage)
             self.click(self.ElectricVehicle_Blacklist)
 
