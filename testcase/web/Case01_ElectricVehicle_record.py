@@ -40,6 +40,7 @@ class add_ElectricVehicle_record(unittest.TestCase):
         self.Page_main.Into_ElectricVehicle_manage()
         ifr = self.driver.find_elements_by_tag_name("iframe")
         self.driver.switch_to.frame(ifr[1])
+        time.sleep(2)
         self.Page_main.IntoModule("电动车备案登记")
         ifr1 = self.driver.find_elements_by_tag_name("iframe")
         self.driver.switch_to.frame(ifr1[1])
@@ -47,8 +48,8 @@ class add_ElectricVehicle_record(unittest.TestCase):
         # 新增按钮
         self.EVRecord.click_add()
         # 新增页面输入项
-        # time.sleep(2)
         self.EVRecord.input_telephone(Config().get('PHONE'))  # 手机号
+        time.sleep(2)
         self.EVRecord.input_chipId(Config().get('chipId'))  # 芯片编号
         self.EVRecord.select_Installpoint()  # 安装点
         self.EVRecord.select_region2()  # 区域-市
@@ -61,15 +62,21 @@ class add_ElectricVehicle_record(unittest.TestCase):
         self.EVRecord.select_purchasedate()   # 购车日期
         self.EVRecord.click_save()   # 保存
         # 判断是否新建成功
-        # self.assertTrue(self.Login.is_text_in_element(self.Page_main.alert_text, "新增成功", str(self.Login.get_text(self.Page_main.alert_text))))
-        print self.Page_main.alert_text
+        self.assertTrue(self.Login.is_text_in_element(self.Page_main.loginAccount_loc, "系统管理员", str(self.Login.get_text(self.Page_main.alert_text))))
 
         # 确定
         # self.EVRecord.click_confirm()   # 确定
-        log.info('-------新增公司    用例结束-------')
+        log.info('-------新增备案登记    用例结束-------')
         # self.driver.switch_to.default_content()
 
-
+    def test03_logout(self):
+        u'''管理员登出'''
+        time.sleep(2)
+        self.Page_main.logout()
+        # 判断是否登出成功
+        time.sleep(2)
+        self.assertTrue(self.Login.is_text_in_element(self.Login.title_loc, "登录", "-------管理员登出     失败-------"))
+        log.info("-------管理员登出      用例结束-------")
 
     # @classmethod
     # def tearDownClass(self):

@@ -7,11 +7,12 @@ import time
 class Page_main(ly):
     # 定位器，定位页面元素
     loginAccount_loc = ("class name", 'userName')
+    logout_loc = ("id", 'logout')
     # 功能按钮，增删改查
-    ADD_Button = ("class name", 'addBtn')
-    DEL_Button = ("class name", 'deleteBtn')
-    EDIT_Button = ("class name", 'editBtn')
-    QUERY_Button = ("class name", 'query')
+    # ADD_Button = ("class name", 'addBtn')
+    # DEL_Button = ("class name", 'deleteBtn')
+    # EDIT_Button = ("class name", 'editBtn')
+    # QUERY_Button = ("class name", 'query')
     # 删除一行
     row_loc = ("class name", "datagrid-row")    # 待删行
     # save_button = ("id", 'saveBtn')    # 保存
@@ -41,22 +42,27 @@ class Page_main(ly):
         if (module == "电动车备案登记"):
         #  '''横向导航菜单：电动车管理'''
             self.click(self.ElectricVehicle_manage)
+            time.sleep(1)
             self.click(self.ElectricVehicle_record)
 
         elif (module == "电动车丢失报警"):
             self.click(self.ElectricVehicle_manage)
+            time.sleep(1)
             self.click(self.ElectricVehicle_LossAlarm)
 
         elif (module == "丢失电动车"):
             self.click(self.ElectricVehicle_manage)
+            time.sleep(1)
             self.click(self.ElectricVehicle_Blacklist)
 
         else:
             pass
 
-    def LoginOut(self):
+    def logout(self):
         '''退出'''
-        self.click(self.loginout_loc)
+        self.move_to_element(self.loginAccount_loc)
+        time.sleep(2)
+        self.click(self.logout_loc)
 
     def add(self):
         '''点击新增按钮'''

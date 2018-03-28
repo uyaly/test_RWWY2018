@@ -128,7 +128,7 @@ class ly(object):
         try:
             result = WebDriverWait(self.driver, timeout, 1).until(EC.text_to_be_present_in_element(locator, text))
         except TimeoutException:
-            print u"元素没定位到："+str(locator) + u"原因是:" + msg
+            print u"元素没定位到："+ str(locator) + u"原因是:" + msg
             return False
         else:
             return result
@@ -239,37 +239,46 @@ class ly(object):
         '''获取文本'''
         element = self.find_element(locator)
         return element.text
+
     def get_attribute(self, locator, name):
         '''获取属性'''
         element = self.find_element(locator)
         return element.get_attribute(name)
+
     def js_execute(self, js):
         '''执行js'''
         return self.driver.execute_script(js)
+
     def js_focus_element(self, locator):
         '''聚焦元素'''
         target = self.find_element(locator)
         self.driver.execute_script("arguments[0].scrollIntoView();", target)
+
     def js_scroll_top(self):
         '''滚动到顶部'''
         js = "window.scrollTo(0,0)"
         self.driver.execute_script(js)
+
     def js_scroll_end(self):
         '''滚动到底部'''
         js = "window.scrollTo(0,document.body.scrollHeight)"
         self.driver.execute_script(js)
+
     def select_by_index(self, locator, index):
         '''通过索引,index是索引第几个，从0开始'''
         element = self.find_element(locator)
         Select(element).select_by_index(index)
+
     def select_by_value(self, locator, value):
         '''通过value属性'''
         element = self.find_element(locator)
         Select(element).select_by_value(value)
+
     def select_by_text(self, locator, text):
         '''通过文本值定位'''
         element = self.find_element(locator)
         Select(element).select_by_value(text)
+
 if __name__ == '__main__':
     # if下面的代码都是测试调试的代码，自测内容
     driver = browser()
@@ -278,8 +287,3 @@ if __name__ == '__main__':
     print driver_n.get_title()
     #　el = driver_n.find_element(input_loc)
     # driver_n.send_keys(input_loc, "yoyo")
-    # button_loc = ("id", "su")
-    # driver_n.click(button_loc)
-    # print driver_n.text_in_element(("name", "tj_trmap"), "地图")
-    # set_loc = ("link text", "设置")
-    # driver_n.move_to_element(set_loc)

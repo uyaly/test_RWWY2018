@@ -7,6 +7,7 @@ class Page_Login(ly):
     username_loc = ("class name", 'userName')  # 输入账号
     password_loc = ("class name", 'passWord')
     submit_loc = ("class name", 'login_btn')
+    title_loc = ("class name", 'login_title')
 
     def input_username(self, username):
         '''输入账号框'''
