@@ -13,7 +13,7 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 log = Log()
 @ddt.ddt
-class add_ElectricVehicle_record(unittest.TestCase):
+class ElectricVehicle_record_DEL(unittest.TestCase):
     u'''新增电动车备案登记'''
 
     @classmethod
@@ -31,7 +31,7 @@ class add_ElectricVehicle_record(unittest.TestCase):
         self.psw = Config().get('PASSWORD')
         self.Login.login(self.username, self.psw)
         # 判断是否登录成功
-        self.assertTrue(self.Login.is_text_in_element(self.Page_main.loginAccount_loc, "系统管理员", "-------管理员登录  失败-------"))
+        self.assertTrue(self.Login.is_text_in_element(self.Page_main.loginAccount_loc, "系统管理员", "-------管理员登录          失败-------"))
         log.info("-------管理员登录      用例结束-------")
 
     def test02_DEL(self):
@@ -58,8 +58,8 @@ class add_ElectricVehicle_record(unittest.TestCase):
         except:
             print "未找到芯片：" + self.chipId
         # print str(alertmsg)
-        self.assertTrue(alertmsg == u'操作成功\n确定', "-------备案登记删除  失败-------")
-        log.info("-------备案登记删除  用例结束-------")
+        self.assertTrue(alertmsg == u'操作成功\n确定', "-------删除备案登记        失败-------")
+        log.info("-------删除备案登记    用例结束-------")
 
     # def test03_logout(self):
     #     u'''管理员登出'''

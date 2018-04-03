@@ -3,7 +3,6 @@ import sys
 import unittest
 import ddt
 from selenium import webdriver
-from selenium.webdriver.support.select import Select
 from pageobject.Page_Login import Page_Login
 from pageobject.Page_main import Page_main
 from pageobject.Page_ElectricVehicle_record import ElectricVehicle_record
@@ -14,8 +13,8 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 log = Log()
 @ddt.ddt
-class add_ElectricVehicle_record(unittest.TestCase):
-    u'''新增电动车备案登记'''
+class ElectricVehicle_record_ADD(unittest.TestCase):
+    u'''新增,电动车备案登记'''
 
     @classmethod
     def setUpClass(self):
@@ -32,8 +31,8 @@ class add_ElectricVehicle_record(unittest.TestCase):
         self.psw = Config().get('PASSWORD')
         self.Login.login(self.username, self.psw)
         # 判断是否登录成功
-        self.assertTrue(self.Login.is_text_in_element(self.Page_main.loginAccount_loc, "系统管理员", "-------管理员登录  失败-------"))
-        log.info("-------管理员登录  用例结束-------")
+        self.assertTrue(self.Login.is_text_in_element(self.Page_main.loginAccount_loc, "系统管理员", "-------管理员登录          失败-------"))
+        log.info("-------管理员登录      用例结束-------")
 
     def test02_add(self):
         u'''电动车备案登记，新增'''
@@ -68,10 +67,10 @@ class add_ElectricVehicle_record(unittest.TestCase):
             self.EVRecord.click_confirm()   # 确定
         except:
             # 如果不能确定，则表示新增成功
-            if alertmsg == "":
-                log.info('-------新增备案登记    成功-------')
-            else:
-                pass
+            # if alertmsg == "":
+            #     log.info('-------新增备案登记        成功-------')
+            # else:
+            pass
         self.assertEqual(alertmsg, "", alertmsg)
         log.info('-------新增备案登记    用例结束-------')
         # self.driver.switch_to.default_content()

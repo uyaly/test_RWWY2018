@@ -57,26 +57,6 @@ class Page_main(ly):
         time.sleep(2)
         self.click(self.logout_loc)
 
-    # def add(self):
-    #     '''点击新增按钮'''
-    #     self.send_keys_botton(self.ADD_Button, Keys.ENTER)
-    #
-    # def delete(self):
-    #     '''点击删除按钮'''
-    #     self.send_keys_botton(self.DEL_Button, Keys.ENTER)
-    #
-    # def edit(self):
-    #     '''点击修改按钮'''
-    #     self.send_keys_botton(self.EDIT_Button, Keys.ENTER)
-    #
-    # def query(self):
-    #     '''点击查询按钮'''
-    #     self.send_keys_botton(self.QUERY_Button, Keys.ENTER)
-
-
-
-
-
     def click_save(self):
         '''保存'''
         self.click(self.save_button)
