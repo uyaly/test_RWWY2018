@@ -26,8 +26,6 @@ class ElectricVehicle_record(ly):
     save_button = ("id", 'saveBtn')  # 保存
     confirm_button = ("link text", u'确定')  # 确定
 
-
-
     # 删除一行
     row_loc = ("class name", "datagrid-row")    # 待删行
 
@@ -58,13 +56,11 @@ class ElectricVehicle_record(ly):
 
     def select_region2(self):
         '''选择区域-市'''
-        # self.select_by_index(self.region2_loc[7], num)
         self.find_elements(self.queue_loc)[7].click()
         self.click(self.region21_loc)
 
     def select_region3(self):
         '''选择区域-区'''
-        # self.select_by_index(self.region3_loc[8], num)
         self.find_elements(self.queue_loc)[8].click()
         self.click(self.region31_loc)
 
@@ -78,25 +74,21 @@ class ElectricVehicle_record(ly):
 
     def select_type(self):
         '''选择车辆类型'''
-        # self.select_by_index(self.type_loc[9], num)
         self.find_elements(self.queue_loc)[9].click()
         self.click(self.type1_loc)
 
     def select_brand(self):
         '''选择车辆品牌'''
-        # self.select_by_index(self.brand_loc[10], num)
         self.find_elements(self.queue_loc)[10].click()
         self.click(self.brand1_loc)
 
     def select_purchasedate(self):
         '''选择购车日期'''
-        # self.select_by_index(self.purchasedate_loc[11], num)
         self.find_elements(self.queue_loc)[11].click()
         self.click(self.purchasedate1_loc)
 
     def select_color(self):
         '''选择车辆颜色'''
-        # self.select_by_index(self.color_loc[12], num)
         self.find_elements(self.queue_loc)[12].click()
         self.click(self.color1_loc)
 

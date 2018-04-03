@@ -53,12 +53,11 @@ class ElectricVehicle_record_DEL(unittest.TestCase):
             time.sleep(2)
             # 判断是否新建成功，记录alert文字
             alertmsg =  self.Login.get_text(self.Page_main.alert_text)
-            # print str(alertmsg)
             self.Page_main.click_ok()
         except:
-            print "未找到芯片：" + self.chipId
-        # print str(alertmsg)
-        self.assertTrue(alertmsg == u'操作成功\n确定', "-------删除备案登记        失败-------")
+            # print "未找到芯片：" + self.chipId
+            pass
+        self.assertIn(u'操作成功', alertmsg, "未找到芯片：" + self.chipId)
         log.info("-------删除备案登记    用例结束-------")
 
     # def test03_logout(self):

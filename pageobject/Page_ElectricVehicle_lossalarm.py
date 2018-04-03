@@ -6,31 +6,39 @@ from selenium.webdriver.support.wait import WebDriverWait
 import time
 class ElectricVehicle_lossalarm(ly):
     # 定位器，定位页面元素
-    # 列表按钮
+    # 列表功能按钮
     add_button = ("xpath", ".//*[@id='carFileSearch']/button[2]")
     query_button = ("xpath", ".//*[@id='carFileSearch']/button[1]")
-    # 新增页面
+
+    # 新增页面输入项
     telephone_loc = ("id", 'telephoneForRegister')  # 手机号
     queue_loc = ("class name", 'combo-text')  # 下拉队列
     region21_loc = ("id", '_easyui_combobox_i15_0')  # 区域-市,下拉选第一项
     region31_loc = ("id", '_easyui_combobox_i14_0')  # 区域-区,下拉选第一项
     occurdate1_loc = ("link text", u'今天')  # 购车日期,今天
+
+    # 新增页面按钮
     save_button = ("id", 'save_addPetFile')  # 保存
     confirm_button = ("link text", u'确定')  # 确定
 
     # 查询
-    chipid_loc = ("xpath", ".//*[@id='add_carFile']/div/div/form/span[1]/input[1]")
+    chipid_loc = ("xpath", ".//*[@id='carFileSearch']/span[2]/input[1]")
     status_loc = ("xpath", ".//*[@id='carFileSearch']/span[5]/input[1]")
+    status1_loc = ("class name", "combobox-item")  # 状态子选项
 
-    status1_loc = ("class name", "combobox-item")  # 状态选项
-    # 删除一行
-    # row_loc = ("class name", "datagrid-row")    # 待删行
-    # 流程
-    operate1_loc = ("link text", u"确认报警")   # 操作
-    operate2_loc = ("link text", u"确认接警")   # 操作
-    operate3_loc = ("link text", u"查找车辆")   # 操作
-    operate4_loc = ("link text", u"涉案人员")   # 操作
-    # 弹出窗口文字
+    # 操作流程
+    operate_loc = ("xpath", ".//*[@id='datagrid-row-r1-2-0']/td[16]/div/a[2]")   # 操作链接，主流程均为第二个
+
+    # 查找车辆
+    searchsave_button = ("id", 'save_serachCar')  # 保存
+    back_Radio = ("xpath", ".//*[@id='serachCar']/div/div/label[2]")  # 单选-车辆已找回
+    notback_Radio = ("xpath", ".//*[@id='serachCar']/div/div/label[3]")  # 单选-车辆未找回
+    notback_loc = ("xpath", ".//*[@id='box_02']/span/input[1]")  # 单选-车辆未找回
+    back_loc = ("xpath", ".//*[@id='box_01']/span/input[1]")  # 单选-车辆未找回
+    back3_loc = ("id", '_easyui_combobox_i22_2')  # 已找回子选项
+    notback1_loc = ("id", '_easyui_combobox_i23_0')  # 未找回子选项
+
+    # 新增弹出窗口文字
     alert_text = ("class name", "messager-question")
 
     def click_add(self):
@@ -73,7 +81,7 @@ class ElectricVehicle_lossalarm(ly):
         except Exception as msg:
             print("Error:%s" % msg)
 
-
+    # 点击功能按钮
     def click_save(self):
         '''点击保存'''
         self.click(self.save_button)
@@ -83,23 +91,40 @@ class ElectricVehicle_lossalarm(ly):
         self.click(self.confirm_button)
 
     def click_query(self):
-        '''点击确定'''
+        '''点击查询'''
         self.click(self.query_button)
 
+    #  查询关键字
     def input_chipid(self, chipId):
         '''查询关键字输入芯片'''
-        self.find_element(self.chipid_loc).sendkeys(chipId)
+        self.find_element(self.chipid_loc).send_keys(chipId)
 
     def select_status(self, status):
         '''查询关键字选择报警状态'''
         self.find_element(self.status_loc).click()
-        su = self.find_elements(self.status_loc1)
+        su = self.find_elements(self.status1_loc)
         for i in range(len(su)):
             if su[i].text == status:
                 su[i].click()  # 选中状态对应项
+    #  查找车辆
+    def operate(self):
+        self.click(self.operate_loc)
 
-    def operate(self, operate):
-        self.click(self.operate1_loc)
+    def search(self, search):
+        if (search == "已找回"):
+            self.click(self.back_Radio)
+            self.click(self.back_loc)
+            self.click(self.back3_loc)
+        else:
+            self.click(self.notback_Radio)
+            self.click(self.notback_loc)
+            self.click(self.notback1_loc)
+
+    def click_searchsave(self):
+        '''查找车辆界面点击保存按钮'''
+        self.click(self.searchsave_button)
+
+    #  涉案人员
 
 
 

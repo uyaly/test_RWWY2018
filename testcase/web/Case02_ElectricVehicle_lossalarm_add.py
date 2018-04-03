@@ -59,7 +59,8 @@ class ElectricVehicle_lossalarm_add(unittest.TestCase):
             self.EVlossalarm.click_confirm()   # 确定
         except:
             pass
-        self.assertEqual(alertmsg, u'报警录入成功/n确定', alertmsg)
+        print alertmsg
+        self.assertIn(u'报警录入成功', alertmsg, alertmsg)
         log.info('-------新增丢失报警    用例结束-------')
 
         # self.driver.switch_to.default_content()

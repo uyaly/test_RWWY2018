@@ -34,9 +34,6 @@ class ElectricVehicle_lossalarm_add(unittest.TestCase):
         # 判断是否登录成功
         self.assertTrue(self.Login.is_text_in_element(self.Page_main.loginAccount_loc, "系统管理员", "-------管理员登录          失败-------"))
         log.info("-------管理员登录      用例结束-------")
-
-    def test02_process(self):
-        u'''电动车丢失报警，对【未处理】状态做【确认报警】'''
         self.Page_main.Into_ElectricVehicle_manage()
         ifr = self.driver.find_elements_by_tag_name("iframe")
         self.driver.switch_to.frame(ifr[1])
@@ -45,25 +42,104 @@ class ElectricVehicle_lossalarm_add(unittest.TestCase):
         ifr1 = self.driver.find_elements_by_tag_name("iframe")
         self.driver.switch_to.frame(ifr1[1])
         time.sleep(2)
-        # 查询芯片【未处理】的报警
+
+    # def test02_ConfirmAlarm(self):
+    #     u'''电动车丢失报警，对【未处理】状态做【确认报警】'''
+    #     ChipID = Config().get('CHIPID')
+    #     self.EVlossalarm.input_chipid(ChipID)
+    #     self.EVlossalarm.select_status("未接警")
+    #     self.EVlossalarm.click_query()
+    #     self.EVlossalarm.operate()  # 【确认报警】
+    #     alertmsg = ''
+    #     try:
+    #         # 判断是否新建成功，记录alert文字
+    #         alertmsg = self.Login.get_text(self.Page_main.alert_text)
+    #         self.EVlossalarm.click_confirm()   # 确定
+    #     except:
+    #         pass
+    #     self.assertIn( u'确认报警成功', alertmsg, alertmsg)
+    #     log.info('-------确认报警        用例结束-------')
+
+    # def test03_ConfirmAccept(self):
+    #     u'''电动车丢失报警，对【已确认】状态做【确认接警】'''
+    #     ChipID = Config().get('CHIPID')
+    #     self.EVlossalarm.input_chipid(ChipID)
+    #     self.EVlossalarm.select_status("已确认")
+    #     self.EVlossalarm.click_query()
+    #     self.driver.execute_script("window.scrollTo(1000,400)")
+    #     self.EVlossalarm.operate()  # 【确认接警】
+    #     alertmsg = ''
+    #     try:
+    #         # 判断是否新建成功，记录alert文字
+    #         alertmsg = self.Login.get_text(self.Page_main.alert_text)
+    #         self.EVlossalarm.click_confirm()   # 确定
+    #     except:
+    #         pass
+    #     self.assertIn( u'确认接警成功', alertmsg, alertmsg)
+    #     log.info('-------确认接警        用例结束-------')
+
+    # def test04_SearchNotBack(self):
+    #     u'''电动车丢失报警，对【已接警】状态做【查找车辆】【未找回】'''
+    #     ChipID = Config().get('CHIPID')
+    #     self.EVlossalarm.input_chipid(ChipID)
+    #     self.EVlossalarm.select_status("已接警")
+    #     self.EVlossalarm.click_query()
+    #     self.driver.execute_script("window.scrollTo(1000,400)")
+    #     self.EVlossalarm.operate()  # 【查找车辆】
+    #     time.sleep(1)
+    #     self.EVlossalarm.search("未找回")
+    #     self.EVlossalarm.click_searchsave()
+    #     alertmsg = ''
+    #     try:
+    #         # 判断是否新建成功，记录alert文字
+    #         alertmsg = self.Login.get_text(self.Page_main.alert_text)
+    #         self.EVlossalarm.click_confirm()   # 确定
+    #     except:
+    #         pass
+    #     self.assertIn( u'处理成功', alertmsg, alertmsg)
+    #     log.info('-------查找车辆-未找回 用例结束-------')
+
+    # def test05_SearchBack(self):
+    #     u'''电动车丢失报警，对【已接警】状态做【查找车辆】【已找回】'''
+    #     ChipID = Config().get('CHIPID')
+    #     self.EVlossalarm.input_chipid(ChipID)
+    #     self.EVlossalarm.select_status("已接警")
+    #     self.EVlossalarm.click_query()
+    #     self.driver.execute_script("window.scrollTo(1000,400)")
+    #     self.EVlossalarm.operate()  # 【查找车辆】
+    #     time.sleep(1)
+    #     self.EVlossalarm.search("已找回")
+    #     self.EVlossalarm.click_searchsave()
+    #     alertmsg = ''
+    #     try:
+    #         # 判断是否新建成功，记录alert文字
+    #         alertmsg = self.Login.get_text(self.Page_main.alert_text)
+    #         self.EVlossalarm.click_confirm()   # 确定
+    #     except:
+    #         pass
+    #     self.assertIn( u'处理成功', alertmsg, alertmsg)
+    #     log.info('-------查找车辆-已找回 用例结束-------')
+
+    def test06_SearchBack(self):
+        u'''电动车丢失报警，对【已完成】状态做【涉案人员】'''
         ChipID = Config().get('CHIPID')
         self.EVlossalarm.input_chipid(ChipID)
-        self.EVlossalarm.select_status("未接警")
+        self.EVlossalarm.select_status("已完成")
         self.EVlossalarm.click_query()
-        # 做【确认报警】
-        # self.EVlossalarm.operate("确认报警")
-
-        # alertmsg = ''
-        # try:
-        #     # 判断是否新建成功，记录alert文字
-        #     alertmsg = self.Login.get_text(self.Page_main.alert_text)
-        #     self.EVlossalarm.click_confirm()   # 确定
-        # except:
-            # pass
-        # self.assertEqual(alertmsg, u'报警录入成功/n确定', alertmsg)
-        # log.info('-------新增丢失报警    用例结束-------')
-
-        # self.driver.switch_to.default_content()
+        self.driver.execute_script("window.scrollTo(1000,400)")
+        self.EVlossalarm.operate()  # 【涉案人员】
+        time.sleep(1)
+        self.EVlossalarm.search("已找回")
+        self.EVlossalarm.click_searchsave()
+        alertmsg = ''
+        try:
+            # 判断是否新建成功，记录alert文字
+            alertmsg = self.Login.get_text(self.Page_main.alert_text)
+            self.EVlossalarm.click_confirm()   # 确定
+        except:
+            pass
+        self.assertIn( u'处理成功', alertmsg, alertmsg)
+        log.info('-------查找车辆-已找回 用例结束-------')
 
     # @classmethod
     # def tearDownClass(self):
