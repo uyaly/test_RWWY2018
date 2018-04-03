@@ -50,7 +50,7 @@ class add_ElectricVehicle_record(unittest.TestCase):
         # 新增页面输入项
         self.EVRecord.input_telephone(Config().get('PHONE'))  # 手机号
         time.sleep(2)
-        self.EVRecord.input_chipId(Config().get('chipId'))  # 芯片编号
+        self.EVRecord.input_chipId(Config().get('CHIPID'))  # 芯片编号
         self.EVRecord.select_Installpoint()  # 安装点
         self.EVRecord.select_region2()  # 区域-市
         self.EVRecord.select_region3()  # 区域-区
@@ -61,18 +61,18 @@ class add_ElectricVehicle_record(unittest.TestCase):
         self.EVRecord.select_color()   # 车辆颜色
         self.EVRecord.select_purchasedate()   # 购车日期
         self.EVRecord.click_save()   # 保存
+        alertmsg = ''
         try:
             # 判断是否新建成功，记录alert文字
             alertmsg = self.Login.get_text(self.Page_main.alert_text)
             self.EVRecord.click_confirm()   # 确定
-            print (alertmsg)
-            self.assertTrue(alertmsg == "", alertmsg)
         except:
             # 如果不能确定，则表示新增成功
-            # if alertmsg is '':
-            print"-------新增备案登记    成功-------"
-            # else:
-            #     print (alertmsg)
+            if alertmsg == "":
+                log.info('-------新增备案登记    成功-------')
+            else:
+                pass
+        self.assertEqual(alertmsg, "", alertmsg)
         log.info('-------新增备案登记    用例结束-------')
         # self.driver.switch_to.default_content()
 
@@ -85,10 +85,10 @@ class add_ElectricVehicle_record(unittest.TestCase):
     #     self.assertTrue(self.Login.is_text_in_element(self.Login.title_loc, "登录", "-------管理员登出     失败-------"))
     #     log.info("-------管理员登出      用例结束-------")
 
-    # @classmethod
-    # def tearDownClass(self):
-    #     # 关闭浏览器
-    #     self.driver.quit()
+    @classmethod
+    def tearDownClass(self):
+        # 关闭浏览器
+        self.driver.quit()
 
 # 执行测试主函数
 if __name__ == '__main__':

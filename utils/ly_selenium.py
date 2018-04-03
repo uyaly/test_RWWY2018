@@ -235,6 +235,7 @@ class ly(object):
     def get_title(self):
         '''获取title'''
         return self.driver.title
+
     def get_text(self, locator):
         '''获取文本'''
         element = self.find_element(locator)

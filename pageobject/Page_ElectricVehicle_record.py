@@ -32,7 +32,7 @@ class ElectricVehicle_record(ly):
     row_loc = ("class name", "datagrid-row")    # 待删行
 
     # 弹出窗口文字
-    alert_text = ("class name", "messager-body")
+    alert_text = ("class name", "messager-question")
 
     def click_add(self):
         '''点击新建'''
@@ -106,7 +106,7 @@ class ElectricVehicle_record(ly):
         row = self.find_elements(self.row_loc)
         try:
             for n in range(len(row)):
-                print row[n].text
+                # print row[n].text
                 if chipId in row[n].text:
                     row[n].click()
                     b = True
