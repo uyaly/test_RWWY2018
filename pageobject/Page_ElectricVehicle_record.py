@@ -8,33 +8,39 @@ class ElectricVehicle_record(ly):
     # 定位器，定位页面元素
     # 列表按钮
     add_button = ("xpath", ".//*[@id='searchForm']/button[2]")
+    del_button = ("xpath", ".//*[@id='searchForm']/button[3]")
     # 新增页面
     telephone_loc = ("id", 'telephoneForRegister')  # 手机号
     chipId_loc = ("name", 'chipId')  # 芯片编号
 
     queue_loc = ("class name", "combo-arrow")  # 下拉队列
-
-    # Installpoint_loc = ("class name", 'combo-arrow')  # 安装点
     Installpoint1_loc = ("id", '_easyui_combobox_i15_0')  # 安装点下拉选第一项
-    # region2_loc = ("class name", 'combo-arrow')  # 区域-市
-    region21_loc = ("id", '_easyui_combobox_i21_0')  # 下拉选第一项
-    # region3_loc = ("class name", 'combo-arrow')  # 区域-区
-    region31_loc = ("id", '_easyui_combobox_i22_0')  # 下拉选第一项
+    region21_loc = ("id", '_easyui_combobox_i21_0')  # 区域-市,下拉选第一项
+    region31_loc = ("id", '_easyui_combobox_i22_0')  # 区域-区,下拉选第一项
     platenumber_loc = ("name", 'vehicleIdmunber')  # 车牌号
     VIN_loc = ("name", 'frameCode')  # 车架号
-    # type_loc = ("class name", 'combo-arrow')  # 车辆类型
-    type1_loc = ("id", '_easyui_combobox_i16_0')  # 下拉选第一项
-    # brand_loc = ("class name", 'combo-arrow')  # 车辆品牌
-    brand1_loc = ("id", '_easyui_combobox_i18_0')  # 下拉选第一项
-    # color_loc = ("class name", 'combo-arrow')  # 车辆颜色
-    color1_loc = ("id", '_easyui_combobox_i17_0')  # 下拉选第一项
-    # purchasedate_loc = ("class name", 'combo-arrow')  # 购车日期
-    purchasedate1_loc = ("link text", u'今天')  # 购车日期-今天
+    type1_loc = ("id", '_easyui_combobox_i16_0')  # 车辆类型,下拉选第一项
+    brand1_loc = ("id", '_easyui_combobox_i18_0')  # 车辆品牌,下拉选第一项
+    color1_loc = ("id", '_easyui_combobox_i17_0')  # 车辆颜色,下拉选第一项
+    purchasedate1_loc = ("link text", u'今天')  # 购车日期,今天
     save_button = ("id", 'saveBtn')  # 保存
     confirm_button = ("link text", u'确定')  # 确定
 
+
+
+    # 删除一行
+    row_loc = ("class name", "datagrid-row")    # 待删行
+
     # 弹出窗口文字
     alert_text = ("class name", "messager-body")
+
+    def click_add(self):
+        '''点击新建'''
+        self.click(self.add_button)
+
+    def click_del(self):
+        '''点击删除'''
+        self.click(self.del_button)
 
     def input_telephone(self, telephone):
         '''输入手机号'''
@@ -94,9 +100,22 @@ class ElectricVehicle_record(ly):
         self.find_elements(self.queue_loc)[12].click()
         self.click(self.color1_loc)
 
-    def click_add(self):
-        '''点击新建'''
-        self.click(self.add_button)
+    def select_row(self, chipId):
+        '''查找列表中的一行'''
+        b = False
+        row = self.find_elements(self.row_loc)
+        try:
+            for n in range(len(row)):
+                print row[n].text
+                if chipId in row[n].text:
+                    row[n].click()
+                    b = True
+                    return b
+            if b == False:
+                return False
+        except Exception as msg:
+            print("Error:%s" % msg)
+
 
     def click_save(self):
         '''点击保存'''
