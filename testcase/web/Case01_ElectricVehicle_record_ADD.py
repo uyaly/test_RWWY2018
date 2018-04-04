@@ -39,6 +39,7 @@ class ElectricVehicle_record_ADD(unittest.TestCase):
         Phone = Config().get('PHONE')
         chipId = Config().get('CHIPID')
         Number = Config().get('PLATENUMBER')
+        VIN = Config().get('VIN')
         self.Page_main.Into_ElectricVehicle_manage()
         ifr = self.driver.find_elements_by_tag_name("iframe")
         self.driver.switch_to.frame(ifr[1])
@@ -57,7 +58,7 @@ class ElectricVehicle_record_ADD(unittest.TestCase):
         self.EVRecord.select_region2()  # 区域-市
         self.EVRecord.select_region3()  # 区域-区
         self.EVRecord.input_platenumber(Number)   # 车牌号
-        self.EVRecord.input_VIN(chipId)   # 车架号
+        self.EVRecord.input_VIN(VIN)   # 车架号
         self.EVRecord.select_type()   # 车辆类型
         self.EVRecord.select_brand()   # 车辆品牌
         time.sleep(1)

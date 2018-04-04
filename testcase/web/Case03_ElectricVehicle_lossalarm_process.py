@@ -121,7 +121,7 @@ class ElectricVehicle_lossalarm_add(unittest.TestCase):
     #     log.info('-------查找车辆-已找回 用例结束-------')
 
     def test06_SearchBack(self):
-        u'''电动车丢失报警，对【已完成】状态做【涉案人员】'''
+        u'''电动车丢失报警，对【已完成】状态添加【涉案人员】'''
         ChipID = Config().get('CHIPID')
         self.EVlossalarm.input_chipid(ChipID)
         self.EVlossalarm.select_status("已完成")
