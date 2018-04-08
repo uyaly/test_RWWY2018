@@ -28,10 +28,11 @@ class ElectricVehicle_lossalarm_add(unittest.TestCase):
     def test01_login(self):
         u'''管理员登录'''
         self.username = Config().get('ADMIN')
+        self.name = Config().get('ADMINNAME')
         self.psw = Config().get('PASSWORD')
         self.Login.login(self.username, self.psw)
         # 判断是否登录成功
-        self.assertTrue(self.Login.is_text_in_element(self.Page_main.loginAccount_loc, "系统管理员", "-------管理员登录          失败-------"))
+        self.assertTrue(self.Login.is_text_in_element(self.Page_main.loginAccount_loc, self.name, "-------管理员登录          失败-------"))
         log.info("-------管理员登录      用例结束-------")
         self.Page_main.Into_ElectricVehicle_manage()
         ifr = self.driver.find_elements_by_tag_name("iframe")
@@ -48,6 +49,7 @@ class ElectricVehicle_lossalarm_add(unittest.TestCase):
         self.EVlossalarm.input_chipid(ChipID)
         self.EVlossalarm.select_status("未接警")
         self.EVlossalarm.click_query()
+        time.sleep(1)
         self.EVlossalarm.operate()  # 【确认报警】
         alertmsg = ''
         try:
@@ -66,6 +68,7 @@ class ElectricVehicle_lossalarm_add(unittest.TestCase):
         self.EVlossalarm.select_status("已确认")
         self.EVlossalarm.click_query()
         self.driver.execute_script("window.scrollTo(1000,400)")
+        time.sleep(1)
         self.EVlossalarm.operate()  # 【确认接警】
         alertmsg = ''
         try:
@@ -84,6 +87,7 @@ class ElectricVehicle_lossalarm_add(unittest.TestCase):
         self.EVlossalarm.select_status("已接警")
         self.EVlossalarm.click_query()
         self.driver.execute_script("window.scrollTo(1000,400)")
+        time.sleep(1)
         self.EVlossalarm.operate()  # 【查找车辆】
         time.sleep(1)
         self.EVlossalarm.search("未找回")
@@ -105,6 +109,7 @@ class ElectricVehicle_lossalarm_add(unittest.TestCase):
         self.EVlossalarm.select_status("已接警")
         self.EVlossalarm.click_query()
         self.driver.execute_script("window.scrollTo(1000,400)")
+        time.sleep(1)
         self.EVlossalarm.operate()  # 【查找车辆】
         time.sleep(1)
         self.EVlossalarm.search("已找回")

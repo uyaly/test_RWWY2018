@@ -97,6 +97,7 @@ class ElectricVehicle_lossalarm(ly):
     #  查询关键字
     def input_chipid(self, chipId):
         '''查询关键字输入芯片'''
+        self.find_element(self.chipid_loc).clear()
         self.find_element(self.chipid_loc).send_keys(chipId)
 
     def select_status(self, status):

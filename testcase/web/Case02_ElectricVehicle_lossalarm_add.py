@@ -28,10 +28,11 @@ class ElectricVehicle_lossalarm_add(unittest.TestCase):
     def test01_login(self):
         u'''管理员登录'''
         self.username = Config().get('ADMIN')
+        self.name = Config().get('ADMINNAME')
         self.psw = Config().get('PASSWORD')
         self.Login.login(self.username, self.psw)
         # 判断是否登录成功
-        self.assertTrue(self.Login.is_text_in_element(self.Page_main.loginAccount_loc, "系统管理员", "-------管理员登录          失败-------"))
+        self.assertTrue(self.Login.is_text_in_element(self.Page_main.loginAccount_loc, self.name, "-------管理员登录          失败-------"))
         log.info("-------管理员登录      用例结束-------")
 
     def test02_add(self):
@@ -65,10 +66,10 @@ class ElectricVehicle_lossalarm_add(unittest.TestCase):
 
         # self.driver.switch_to.default_content()
 
-    # @classmethod
-    # def tearDownClass(self):
-    #     # 关闭浏览器
-    #     self.driver.quit()
+    @classmethod
+    def tearDownClass(self):
+        # 关闭浏览器
+        self.driver.quit()
 
 # 执行测试主函数
 if __name__ == '__main__':

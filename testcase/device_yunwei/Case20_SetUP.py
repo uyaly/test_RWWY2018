@@ -40,5 +40,7 @@ class setup(unittest.TestCase):
         self.psw = Config().get('PASSWORD')
         self.find_element_by_id("username").send_keys(self.username)
         self.find_element_by_id("password").send_keys(self.psw)
+        self.find_element_by_id("btn_submit").click()
+
         # 进目录
         self.quit()
