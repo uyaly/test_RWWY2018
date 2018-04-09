@@ -15,8 +15,11 @@ class ElectricVehicle_record(ly):
 
     queue_loc = ("class name", "combo-arrow")  # 下拉队列
     Installpoint1_loc = ("id", '_easyui_combobox_i15_0')  # 安装点下拉选第一项
-    region21_loc = ("id", '_easyui_combobox_i21_0')  # 区域-市,下拉选第一项
-    region31_loc = ("id", '_easyui_combobox_i22_0')  # 区域-区,下拉选第一项
+    # region21_loc = ("id", '_easyui_combobox_i21_10')  # 区域-市,孝感
+    # region31_loc = ("id", '_easyui_combobox_i22_0')  # 区域-区,安陆
+    region21_loc = ("id", '_easyui_combobox_i21_7')  # 区域-市,武汉
+    region31_loc = ("id", '_easyui_combobox_i22_4')  # 区域-区,洪山
+
     platenumber_loc = ("name", 'vehicleIdmunber')  # 车牌号
     VIN_loc = ("name", 'frameCode')  # 车架号
     type1_loc = ("id", '_easyui_combobox_i16_0')  # 车辆类型,下拉选第一项
