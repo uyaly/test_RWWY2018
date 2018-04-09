@@ -3,6 +3,8 @@
 from appium import webdriver
 import time
 from appium.webdriver.common.touch_action import TouchAction
+from utils.config import Config
+from utils.log1 import Log
 
 desired_caps = {
                 # 这里是声明android还是ios的环境
@@ -23,7 +25,16 @@ desired_caps = {
 driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub', desired_caps)
 # 休眠15秒等待页面加载完成
 time.sleep(5)
-driver.find_element_by_id("username").send_keys("18062427385")
-driver.find_element_by_id("password").send_keys("000000")
+chipId = Config().get('CHIPID')
+# driver.find_element_by_id("username").send_keys("18062427385")
+# driver.find_element_by_id("password").send_keys("000000")
+driver.find_element_by_accessibility_id("报警记录").click()
+# 搜索
+driver.find_element_by_accessibility_id("headRightString").click()
+driver.find_element_by_class_name("android.widget.EditText").send_keys(chipId)
+driver.find_element_by_accessibility_id("搜索").click()
+# 需要修改bug后才能看到按钮
+
 # 进目录
-driver.quit()
+
+# driver.quit()
