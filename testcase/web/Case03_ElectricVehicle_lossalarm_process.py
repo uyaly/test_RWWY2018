@@ -13,7 +13,7 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 log = Log()
 @ddt.ddt
-class ElectricVehicle_lossalarm_add(unittest.TestCase):
+class lossalarm_process(unittest.TestCase):
     u'''走流程,电动车丢失报警'''
 
     @classmethod
@@ -36,7 +36,7 @@ class ElectricVehicle_lossalarm_add(unittest.TestCase):
         log.info("-------管理员登录      用例结束-------")
         self.Page_main.Into_ElectricVehicle_manage()
         ifr = self.driver.find_elements_by_tag_name("iframe")
-        self.driver.switch_to.frame(ifr[1])
+        self.driver.switch_to.frame(ifr[0])
         time.sleep(2)
         self.Page_main.IntoModule("电动车丢失报警")
         ifr1 = self.driver.find_elements_by_tag_name("iframe")
@@ -124,10 +124,10 @@ class ElectricVehicle_lossalarm_add(unittest.TestCase):
         self.assertIn( u'处理成功', alertmsg, alertmsg)
         log.info('-------查找车辆-已找回 用例结束-------')
 
-    # @classmethod
-    # def tearDownClass(self):
-    #     # 关闭浏览器
-    #     self.driver.quit()
+    @classmethod
+    def tearDownClass(self):
+        # 关闭浏览器
+        self.driver.quit()
 
 # 执行测试主函数
 if __name__ == '__main__':

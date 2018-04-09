@@ -13,7 +13,7 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 log = Log()
 @ddt.ddt
-class ElectricVehicle_lossalarm_add(unittest.TestCase):
+class lossalarm_add(unittest.TestCase):
     u'''新增,电动车丢失报警'''
 
     @classmethod
@@ -39,7 +39,7 @@ class ElectricVehicle_lossalarm_add(unittest.TestCase):
         u'''电动车丢失报警，新增'''
         self.Page_main.Into_ElectricVehicle_manage()
         ifr = self.driver.find_elements_by_tag_name("iframe")
-        self.driver.switch_to.frame(ifr[1])
+        self.driver.switch_to.frame(ifr[0])
         time.sleep(2)
         self.Page_main.IntoModule("电动车丢失报警")
         ifr1 = self.driver.find_elements_by_tag_name("iframe")

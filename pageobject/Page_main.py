@@ -12,7 +12,7 @@ class Page_main(ly):
     # cancel_button = ("id", 'cancelBtn')    # 取消
     ok_button = ("link text", '确定')    # 确定
     # 模块
-    ElectricVehicle_Monitor = ("xpath", ".//*[@id='mainlayout_body']/div[1]/div/div[2]/ul/li[2]/a")   # 横向导航菜单：电动车管理
+    ElectricVehicle_Monitor = ("xpath", ".//*[@id='mainlayout_body']/div[1]/div/div[2]/ul/li[1]/a")   # 横向导航菜单：电动车管理
     ElectricVehicle_manage = ("xpath", ".//*[@id='accordion']/div[2]/div[1]/div[1]")    # 电动车管理
     ElectricVehicle_record = ("xpath", ".//*[@id='accordion']/div[2]/div[2]/ul/li[2]/a")    # 电动车备案登记
     ElectricVehicle_LossAlarm = ("xpath", ".//*[@id='accordion']/div[2]/div[2]/ul/li[3]/a")    # 电动车丢失报警

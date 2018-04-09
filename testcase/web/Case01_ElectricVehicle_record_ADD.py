@@ -13,7 +13,7 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 log = Log()
 @ddt.ddt
-class ElectricVehicle_record_ADD(unittest.TestCase):
+class record_ADD(unittest.TestCase):
     u'''新增,电动车备案登记'''
 
     @classmethod
@@ -43,7 +43,7 @@ class ElectricVehicle_record_ADD(unittest.TestCase):
         VIN = Config().get('VIN')
         self.Page_main.Into_ElectricVehicle_manage()
         ifr = self.driver.find_elements_by_tag_name("iframe")
-        self.driver.switch_to.frame(ifr[1])
+        self.driver.switch_to.frame(ifr[0])
         time.sleep(2)
         self.Page_main.IntoModule("电动车备案登记")
         ifr1 = self.driver.find_elements_by_tag_name("iframe")

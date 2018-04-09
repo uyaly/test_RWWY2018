@@ -13,8 +13,8 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 log = Log()
 @ddt.ddt
-class ElectricVehicle_record_DEL(unittest.TestCase):
-    u'''新增电动车备案登记'''
+class record_DEL(unittest.TestCase):
+    u'''删除电动车备案登记'''
 
     @classmethod
     def setUpClass(self):
@@ -30,7 +30,6 @@ class ElectricVehicle_record_DEL(unittest.TestCase):
         self.username = Config().get('ADMIN')
         self.name = Config().get('ADMINNAME')
         self.psw = Config().get('PASSWORD')
-
         self.Login.login(self.username, self.psw)
         # 判断是否登录成功
         self.assertTrue(self.Login.is_text_in_element(self.Page_main.loginAccount_loc, self.name, "-------管理员登录          失败-------"))
@@ -41,7 +40,7 @@ class ElectricVehicle_record_DEL(unittest.TestCase):
         self.chipId = Config().get('CHIPID')
         self.Page_main.Into_ElectricVehicle_manage()
         ifr = self.driver.find_elements_by_tag_name("iframe")
-        self.driver.switch_to.frame(ifr[1])
+        self.driver.switch_to.frame(ifr[0])
         time.sleep(2)
         self.Page_main.IntoModule("电动车备案登记")
         ifr1 = self.driver.find_elements_by_tag_name("iframe")
