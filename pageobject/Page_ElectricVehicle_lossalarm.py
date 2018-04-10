@@ -13,10 +13,10 @@ class ElectricVehicle_lossalarm(ly):
     # 新增页面输入项
     telephone_loc = ("id", 'telephoneForRegister')  # 手机号
     queue_loc = ("class name", 'combo-text')  # 下拉队列
-    region21_loc = ("id", '_easyui_combobox_i15_7')  # 区域-市,武汉
-    region31_loc = ("id", '_easyui_combobox_i14_4')  # 区域-区,洪山
-    # region21_loc = ("id", '_easyui_combobox_i15_10')  # 区域-市,孝感
-    # region31_loc = ("id", '_easyui_combobox_i14_0')  # 区域-区,安陆
+    # region21_loc = ("id", '_easyui_combobox_i15_7')  # 区域-市,武汉
+    # region31_loc = ("id", '_easyui_combobox_i14_4')  # 区域-区,洪山
+    region21_loc = ("id", '_easyui_combobox_i15_0')  # 区域-市,孝感
+    region31_loc = ("id", '_easyui_combobox_i14_0')  # 区域-区,安陆
 
     occurdate1_loc = ("link text", u'今天')  # 购车日期,今天
 
