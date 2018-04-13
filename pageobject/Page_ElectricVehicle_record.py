@@ -14,7 +14,7 @@ class ElectricVehicle_record(ly):
     chipId_loc = ("name", 'chipId')  # 芯片编号
 
     queue_loc = ("class name", "combo-arrow")  # 下拉队列
-    Installpoint1_loc = ("id", '_easyui_combobox_i15_4')  # 安装点下拉选第一项
+    Installpoint1_loc = ("id", '_easyui_combobox_i15_0')  # 安装点下拉选第一项
     region21_loc = ("id", '_easyui_combobox_i21_0')  # 区域-市,孝感
     region31_loc = ("id", '_easyui_combobox_i22_0')  # 区域-区,安陆
     # region21_loc = ("id", '_easyui_combobox_i21_7')  # 区域-市,武汉
