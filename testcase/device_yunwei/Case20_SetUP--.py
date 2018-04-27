@@ -35,12 +35,19 @@ class setup(unittest.TestCase):
         driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub', desired_caps)
 
 
-    def test01_login(self):
-        self.username = Config().get('ADMIN')
-        self.psw = Config().get('PASSWORD')
-        self.find_element_by_id("username").send_keys(self.username)
-        self.find_element_by_id("password").send_keys(self.psw)
-        self.find_element_by_id("btn_submit").click()
+    # def test01_login(self):
+        driver.username = Config().get('ADMIN')
+        driver.psw = Config().get('PASSWORD')
+        try:
+            driver.find_element_by_id("username").send_keys(self.username)
+            driver.find_element_by_id("password").send_keys(self.psw)
+            driver.find_element_by_id("btn_submit").click()
+        except:
+            pass
+        # 安装工单
+        driver.find_element_by_accessibility_id("install").click()
+
+
 
         # 进目录
-        self.quit()
+        # self.quit()
