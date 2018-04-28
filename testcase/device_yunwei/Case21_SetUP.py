@@ -40,8 +40,6 @@ try:
 except:
     pass
 # 安装工单
-driver.find_element_by_accessibility_id("安装工单").click()
-
-
+driver.find_element_by_accessibility_id("box01_icon").click()
 
 driver.quit()
