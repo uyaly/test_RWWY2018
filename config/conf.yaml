@@ -1,6 +1,6 @@
 URL: "http://121.43.182.53:14010/iot/home"
 PASSWORD: '000000'
-ADMIN: "A00001_Admin"
+ADMIN: "A00002_Admin"
 ADMINNAME: "admin"
 CHIPID: "000001"
 alarmId: ""

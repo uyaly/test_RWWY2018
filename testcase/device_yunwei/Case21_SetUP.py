@@ -2,6 +2,7 @@
 # !/usr/bin/env Python
 import unittest
 import ddt
+import time
 from appium import webdriver
 from utils.config import Config
 from time import sleep
@@ -31,15 +32,28 @@ driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub', desired_caps)
 
 username = Config().get('ADMIN')
 psw = Config().get('PASSWORD')
-try:
-    driver.find_element_by_id("username").send_keys("")
-    driver.find_element_by_id("username").send_keys(username)
-    driver.find_element_by_id("password").send_keys("")
-    driver.find_element_by_id("password").send_keys(psw)
-    driver.find_element_by_id("btn_submit").click()
-except:
-    pass
-# 安装工单
-driver.find_element_by_accessibility_id("box01_icon").click()
+# try:
+# contexts = driver.contexts
+# print contexts
+time.sleep(2)
+driver.wait_activity(".base.ui.MainActivity", 10)
+# driver.find_element_by_id("username").send_keys("")
+driver.find_element_by_name(u"请输入登录账号").send_keys("")
+driver.find_element_by_name(u"请输入登录账号").send_keys(username)
+driver.find_element_by_name(u"请输入登录密码").send_keys("")
+driver.find_element_by_name(u"请输入登录密码").send_keys(psw)
+time.sleep(2)
+# driver.find_element_by_id("btn_submit").click()
+# driver.find_element_by_class_name("android.widget.Button").click()
 
-driver.quit()
+# driver.find_element_by_accessibility_id("登录").click()
+driver.find_element_by_android_uiautomator('new UiSelector().description("登录")').click()
+# except:
+#     pass
+
+
+# 安装工单
+# driver.find_element_by_accessibility_id("box01_icon").click()
+# driver.find_element_by_android_uiautomator('new UiSelector().description("安装工单")').click()
+
+# driver.quit()
