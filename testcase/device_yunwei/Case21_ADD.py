@@ -64,9 +64,8 @@ menu[5].click()
 # 添加杆号
 # driver.find_element_by_accessibility_id("杆号管理").click()
 # driver.find_element_by_accessibility_id("添加杆号").click()
-# driver.find_elements_by_class_name("android.widget.EditText")[0].send_keys(rodnum)
+# driver.find_elements_by_class_name("android.widget.EditText")[0].send_keys(rodnum)  # 输入杆号
 # driver.find_element_by_accessibility_id("确定").click()
-# # # driver.find_element_by_accessibility_id("杆号列表").click()
 # time.sleep(1)
 # # 返回
 # driver.find_elements_by_class_name("android.view.View")[0].click()
@@ -74,26 +73,27 @@ time.sleep(1)
 # 添加基站
 driver.find_element_by_accessibility_id("基站管理").click()
 driver.find_element_by_accessibility_id("添加基站").click()
-time.sleep(1)
+time.sleep(2)
 # 添加手机图片
-# driver.find_element_by_accessibility_id("add_picture").click()
-# driver.tap([(366,1812),])
-# driver.find_element_by_name("相册").click()
-# driver.find_element_by_id("com.miui.gallery:id/pick_num_indicator").click()
-# driver.find_elements_by_class_name("android.widget.TextView")[1].click()
-
-# 输入基站物理编号
-driver.find_elements_by_class_name("android.widget.EditText")[1].send_keys(basenum)
-# 输入杆号
-driver.find_elements_by_class_name("android.widget.EditText")[2].send_keys(rodnum)
+driver.find_element_by_accessibility_id("add_picture").click()
+time.sleep(1)
+driver.tap([(366,1812),])
+time.sleep(1)
+driver.find_element_by_name("相册").click()
+driver.find_elements_by_id("com.miui.gallery:id/pick_num_indicator")[1].click()  # 选第二张图
+# 输入信息
+driver.find_elements_by_class_name("android.widget.EditText")[1].send_keys(basenum)  # 输入基站物理编号
+driver.find_elements_by_class_name("android.widget.EditText")[2].send_keys(rodnum)  # 输入杆号
 driver.find_element_by_accessibility_id("查询杆号").click()
 time.sleep(1)
 driver.tap([(366,1812),])
-# 软件版本
-driver.find_elements_by_class_name("android.widget.EditText")[5].send_keys("1.0")
-# 联系人
-driver.find_elements_by_class_name("android.widget.EditText")[6].send_keys(u"张三")
-driver.swipe(100, 100, 100, 1000)
+time.sleep(2)
+driver.swipe(100, 1000, 100, 50,0)  # 滑动
+driver.find_elements_by_class_name("android.widget.EditText")[5].send_keys("v 1.0")  # 软件版本
+driver.find_elements_by_class_name("android.widget.EditText")[6].send_keys(u"张三")  # 联系人
+driver.find_elements_by_class_name("android.widget.EditText")[7].send_keys("13000000000")  # 联系电话
+driver.find_element_by_accessibility_id("确定").click()
+
 # print len(ll)
 # for i in range(len(ll)):
 #     if i >4:
