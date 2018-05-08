@@ -36,10 +36,8 @@ username = Config().get('ADMIN')
 psw = Config().get('PASSWORD')
 rodnum = Config().get('RODNUM')
 basenum = Config().get('BASENUM')
-
+# 登录
 try:
-    # contexts = driver.contexts
-    # print contexts
     time.sleep(2)
     # driver.wait_activity(".base.ui.MainActivity", 5)
     # driver.find_element_by_id("username").clear()
@@ -48,27 +46,23 @@ try:
     loginpage[0].send_keys(username)
     loginpage[1].clear()
     loginpage[1].send_keys(psw)
-    # time.sleep(2)
-    # driver.find_element_by_id("btn_submit").click()
     driver.find_element_by_class_name("android.widget.Button").click()
-    # driver.find_element_by_accessibility_id("登录").click()
-    # driver.find_element_by_android_uiautomator('new UiSelector().description("登录")').click()
-    # driver.tap([(45,1074),])
 except:
     pass
 time.sleep(2)
 
 # 安装工单
-menu = driver.find_elements_by_class_name("android.view.View")
-menu[5].click()
+driver.find_elements_by_class_name("android.view.View")[5].click()
 # 添加杆号
-# driver.find_element_by_accessibility_id("杆号管理").click()
-# driver.find_element_by_accessibility_id("添加杆号").click()
-# driver.find_elements_by_class_name("android.widget.EditText")[0].send_keys(rodnum)  # 输入杆号
-# driver.find_element_by_accessibility_id("确定").click()
-# time.sleep(1)
-# # 返回
-# driver.find_elements_by_class_name("android.view.View")[0].click()
+driver.find_element_by_accessibility_id("杆号管理").click()
+driver.find_element_by_accessibility_id("添加杆号").click()
+time.sleep(1)
+driver.find_elements_by_class_name("android.widget.EditText")[0].send_keys(rodnum)  # 输入杆号
+driver.find_element_by_accessibility_id("确定").click()
+
+time.sleep(2)
+# 返回
+driver.find_elements_by_class_name("android.view.View")[1].click()
 time.sleep(1)
 # 添加基站
 driver.find_element_by_accessibility_id("基站管理").click()
@@ -78,7 +72,7 @@ time.sleep(2)
 driver.find_element_by_accessibility_id("add_picture").click()
 time.sleep(1)
 driver.tap([(366,1812),])
-time.sleep(1)
+time.sleep(2)
 driver.find_element_by_name("相册").click()
 driver.find_elements_by_id("com.miui.gallery:id/pick_num_indicator")[1].click()  # 选第二张图
 # 输入信息
@@ -90,16 +84,21 @@ driver.tap([(366,1812),])
 time.sleep(2)
 driver.swipe(100, 1000, 100, 50,0)  # 滑动
 driver.find_elements_by_class_name("android.widget.EditText")[5].send_keys("v 1.0")  # 软件版本
-driver.find_elements_by_class_name("android.widget.EditText")[6].send_keys(u"张三")  # 联系人
-driver.find_elements_by_class_name("android.widget.EditText")[7].send_keys("13000000000")  # 联系电话
 driver.find_element_by_accessibility_id("确定").click()
+time.sleep(2)
+# 判断
+try:
+    assert driver.find_elements_by_class_name("android.view.View")[4].get_attribute("name") == basenum, "新增基站未找到"
+    print("新增基站成功")
+except AssertionError,msg:
+    print msg
 
+# ll = driver.find_elements_by_class_name("android.view.View")
+# ll = driver.find_element_by_name("")
 # print len(ll)
 # for i in range(len(ll)):
-#     if i >4:
-#         print(i)
-#         ll[i].click()
-# driver.find_element_by_accessibility_id("install").click()
-# driver.find_element_by_android_uiautomator('new UiSelector().description("安装工单")').click()
+#     print str(i) + ":" + ll[i].get_attribute("name")
+        # ll[i].click()
 
-# driver.quit()
+
+driver.quit()

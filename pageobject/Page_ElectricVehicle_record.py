@@ -7,8 +7,8 @@ import time
 class ElectricVehicle_record(ly):
     # 定位器，定位页面元素
     # 列表按钮
-    add_button = ("xpath", ".//*[@id='searchForm']/button[2]")
-    del_button = ("xpath", ".//*[@id='searchForm']/button[3]")
+    add_button = ("xpath", ".//*[@id='searchForm']/button[3]")
+    del_button = ("xpath", ".//*[@id='searchForm']/button[4]")
     # 新增页面
     telephone_loc = ("id", 'telephoneForRegister')  # 手机号
     chipId_loc = ("name", 'chipId')  # 芯片编号
