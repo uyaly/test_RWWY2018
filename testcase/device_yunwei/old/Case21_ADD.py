@@ -63,7 +63,7 @@ driver.find_element_by_accessibility_id("确定").click()
 time.sleep(2)
 # 返回
 driver.find_elements_by_class_name("android.view.View")[1].click()
-time.sleep(1)
+time.sleep(2)
 # 添加基站
 driver.find_element_by_accessibility_id("基站管理").click()
 driver.find_element_by_accessibility_id("添加基站").click()
@@ -85,7 +85,7 @@ time.sleep(2)
 driver.swipe(100, 1000, 100, 50,0)  # 滑动
 driver.find_elements_by_class_name("android.widget.EditText")[5].send_keys("v 1.0")  # 软件版本
 driver.find_element_by_accessibility_id("确定").click()
-time.sleep(2)
+time.sleep(5)
 # 判断
 try:
     assert driver.find_elements_by_class_name("android.view.View")[4].get_attribute("name") == basenum, "新增基站未找到"
