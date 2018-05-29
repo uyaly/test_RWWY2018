@@ -13,7 +13,7 @@ sys.setdefaultencoding('utf8')
 class setup(unittest.TestCase):
 
     @classmethod
-    def setup(self):
+    def setUpClass(self):
         desired_caps = {
                     # 这里是声明android还是ios的环境
                     'platformname': 'android',
@@ -96,7 +96,7 @@ class setup(unittest.TestCase):
             print msg
 
     @classmethod
-    def teardown(self):
+    def tearDownClass(self):
         # 关闭浏览器
         self.quit()
 

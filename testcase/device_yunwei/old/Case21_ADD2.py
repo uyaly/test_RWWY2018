@@ -5,9 +5,9 @@ import ddt
 import time
 from appium import webdriver
 from utils.config import Config
-from time import sleep
-from appium.webdriver.common.touch_action import TouchAction
+from utils.config import XlsData
 from utils.log1 import Log
+
 import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
@@ -34,8 +34,8 @@ driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub', desired_caps)
 
 username = Config().get('ADMIN')
 psw = Config().get('PASSWORD')
-rodnum = Config().get('RODNUM')
-basenum = Config().get('BASENUM')
+rodnum = XlsData().get('RODNUM')
+basenum = XlsData().get('BASENUM')
 # 登录
 try:
     time.sleep(2)
@@ -57,9 +57,9 @@ driver.find_elements_by_class_name("android.view.View")[5].click()
 driver.find_element_by_accessibility_id("杆号管理").click()
 driver.find_element_by_accessibility_id("添加杆号").click()
 time.sleep(1)
-driver.find_elements_by_class_name("android.widget.EditText")[0].send_keys(rodnum)  # 输入杆号
-driver.find_element_by_accessibility_id("确定").click()
-# driver.find_element_by_accessibility_id("添加下一个").click()
+for i in len(rodnum):
+    driver.find_elements_by_class_name("android.widget.EditText")[0].send_keys(rodnum[i])  # 输入杆号
+    driver.find_element_by_accessibility_id("添加下一个").click()
 
 time.sleep(2)
 # 返回
@@ -85,8 +85,7 @@ driver.tap([(366,1812),])
 time.sleep(2)
 driver.swipe(100, 1000, 100, 50,0)  # 滑动
 driver.find_elements_by_class_name("android.widget.EditText")[5].send_keys("v 1.0")  # 软件版本
-driver.find_element_by_accessibility_id("确定").click()
-# driver.find_element_by_accessibility_id("添加下一个").click()
+driver.find_element_by_accessibility_id("添加下一个").click()
 time.sleep(5)
 # 判断
 try:

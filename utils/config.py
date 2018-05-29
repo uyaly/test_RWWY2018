@@ -26,7 +26,12 @@ class XlsData:
         print xlsdata.dict_data()
 
     def get(self, element, index=0):
+        print "列表长度：" + str(len(self.XlsData))
         for index in range(len(self.XlsData)):
             if self.XlsData[index] == element:
                 print self.XlsData[index+1]
-            index = index + 1
+# 执行测试主函数
+if __name__ == '__main__':
+    # 执行main全局方法，将会执行上述所有以test开头的测试方法
+    # unittest.main(verbosity=2)
+    XlsData.get()
