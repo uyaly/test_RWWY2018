@@ -11,7 +11,7 @@ class ElectricVehicle_record(ly):
     del_button = ("xpath", ".//*[@id='searchForm']/button[4]")
     # 新增页面
     telephone_loc = ("id", 'telephoneForRegister')  # 手机号
-    chipId_loc = ("name", 'chipId')  # 芯片编号
+
 
     queue_loc = ("class name", "combo-arrow")  # 下拉队列
     Installpoint1_loc = ("id", '_easyui_combobox_i15_0')  # 安装点下拉选第一项
@@ -26,6 +26,11 @@ class ElectricVehicle_record(ly):
     brand1_loc = ("id", '_easyui_combobox_i18_0')  # 车辆品牌,下拉选第一项
     color1_loc = ("id", '_easyui_combobox_i17_0')  # 车辆颜色,下拉选第一项
     purchasedate1_loc = ("link text", u'今天')  # 购车日期,今天
+    pic_loc = ("class name", "avatarPreview")   # 图片上传
+    pic1_loc = ("class name", "photoBtn")   # 照片
+
+    chipId_button = ("class name", 'btn-primary')  # 芯片
+    chipId_loc = ("id", 'readChipId')  # 芯片输入
     save_button = ("id", 'saveBtn')  # 保存
     confirm_button = ("link text", u'确定')  # 确定
 
@@ -34,6 +39,7 @@ class ElectricVehicle_record(ly):
 
     # 弹出窗口文字
     alert_text = ("class name", "messager-question")
+
 
     def click_add(self):
         '''点击新建'''
@@ -49,6 +55,7 @@ class ElectricVehicle_record(ly):
 
     def input_chipId(self, chipId):
         '''输入芯片编号'''
+        self.click(self.chipId_button)
         self.send_keys(self.chipId_loc, chipId)
 
     def select_Installpoint(self):
@@ -65,6 +72,11 @@ class ElectricVehicle_record(ly):
     def select_region3(self):
         '''选择区域-区'''
         self.find_elements(self.queue_loc)[8].click()
+        self.click(self.region31_loc)
+
+    def select_card(self):
+        '''选择有无行驶证'''
+        self.find_elements(self.queue_loc)[13].click()
         self.click(self.region31_loc)
 
     def input_platenumber(self, platenumber):
@@ -94,6 +106,19 @@ class ElectricVehicle_record(ly):
         '''选择车辆颜色'''
         self.find_elements(self.queue_loc)[12].click()
         self.click(self.color1_loc)
+
+    def select_attribute(self):
+        '''选择车辆属性'''
+        self.find_elements(self.queue_loc)[14].click()
+        self.click(self.color1_loc)
+
+    def select_pic(self):
+        '''选择车辆属性'''
+        self.find_elements(self.pic_loc)[0].click()
+        self.click(self.pic1_loc)
+
+
+
 
     def select_row(self, chipId):
         '''查找列表中的一行'''

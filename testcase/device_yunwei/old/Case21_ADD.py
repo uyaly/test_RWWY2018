@@ -39,6 +39,8 @@ basenum = Config().get('BASENUM')
 # 登录
 try:
     time.sleep(2)
+    # 允许
+    driver.find_element_by_name("允许").click()
     # driver.wait_activity(".base.ui.MainActivity", 5)
     # driver.find_element_by_id("username").clear()
     loginpage = driver.find_elements_by_class_name("android.widget.EditText")

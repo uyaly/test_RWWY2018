@@ -3,6 +3,7 @@ import os
 from utils.file_reader import YamlReader
 from utils.file_reader import ExcelUtil
 import xlrd
+import ddt
 
 BASE_PATH = os.path.abspath(os.path.dirname(os.path.abspath(__file__)) + '\..')
 CONFIG_FILE = BASE_PATH + '\\config\\conf.yaml'
@@ -19,17 +20,20 @@ class Config:
     def get(self, element, index=0):
         return self.config[index].get(element)
 
+@ddt.ddt
 class XlsData:
     u'''读取xls数据'''
     def __init__(self):
-        xlsdata = ExcelUtil(DATA_FILE, sheetName)
-        print xlsdata.dict_data()
+        self.xlsdata = ExcelUtil(DATA_FILE, sheetName)
+        self.testData = self.xlsdata.dict_data()
+        print self.testData
 
     def get(self, element, index=0):
-        print "列表长度：" + str(len(self.XlsData))
-        for index in range(len(self.XlsData)):
-            if self.XlsData[index] == element:
-                print self.XlsData[index+1]
+        # print "列表长度：" + str(len(self.xlsdata))
+        # for index in self.testData:
+        #     if self.testData[index] == element:
+        #         print self.testData[index+1]
+        return self.testData[index].get(element)
 # 执行测试主函数
 if __name__ == '__main__':
     # 执行main全局方法，将会执行上述所有以test开头的测试方法

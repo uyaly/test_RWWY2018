@@ -58,6 +58,7 @@ class record_ADD(unittest.TestCase):
         self.EVRecord.select_Installpoint()  # 安装点
         self.EVRecord.select_region2()  # 区域-市
         self.EVRecord.select_region3()  # 区域-区
+
         self.EVRecord.input_platenumber(Number)   # 车牌号
         self.EVRecord.input_VIN(VIN)   # 车架号
         self.EVRecord.select_type()   # 车辆类型
