@@ -118,8 +118,6 @@ class ElectricVehicle_record(ly):
         self.click(self.pic1_loc)
 
 
-
-
     def select_row(self, chipId):
         '''查找列表中的一行'''
         b = False

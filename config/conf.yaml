@@ -1,4 +1,4 @@
-URL: "http://192.168.3.54:14010/iot/home"
+URL: "http://192.168.3.183:14010/iot/login"
 PASSWORD: '000000'
 ADMIN: "whrwyy_test"
 ADMINNAME: "test_name"
