@@ -23,8 +23,8 @@ class YamlReader:
             with open(self.yaml, 'rb')as f:
                 return list(yaml.safe_load_all(f))
 
-class ExcelUtil():
-    def __init__(self, excelPath, sheetName):
+class ExcelUtil:
+    def dict_data(self, excelPath, sheetName):
         self.data = xlrd.open_workbook(excelPath)
         self.table = self.data.sheet_by_name(sheetName)
         # 获取第一行作为key值
@@ -33,8 +33,6 @@ class ExcelUtil():
         self.rowNum = self.table.nrows
         # 获取总列数
         self.colNum = self.table.ncols
-
-    def dict_data(self):
         if self.rowNum <= 1:
             print("总行数小亍1")
         else:
@@ -52,8 +50,10 @@ class ExcelUtil():
 
 if __name__ == "__main__":
     # 注意：此代码if以上的勿乱改，调用此方法叧需修改两个参数，一个是excelPath存放xlsx的路径，另外一个是sheetName的值
-    # filePath = r"D:\PycharmProjects\test_hpk2017\data\Page_Login.xlsx"
-    # sheetName = "original"
-    # data = ExcelUtil(filePath, sheetName)
-    # print data.dict_data()
+    filePath = r'E:\PycharmProjects\test_RWWY\drivers\test.xlsx'
+    sheetName = '1'
+    print ExcelUtil.dict_data(filePath, sheetName)
+
+
+
     pass
