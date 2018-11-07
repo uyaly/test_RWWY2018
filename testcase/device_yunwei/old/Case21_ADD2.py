@@ -18,7 +18,7 @@ desired_caps = {
             # 这里是声明android还是ios的环境
             'platformName': 'Android',
             # 手机设备名称，通过adb devices查看
-            'deviceName': '11642f40',
+            'deviceName': 'cc2ae2f4',   # 公司 cc2ae2f4，自己 11642f40
             # android系统的版本号
             'platformVersion': '6.0.1',
             # apk包名
@@ -26,9 +26,9 @@ desired_caps = {
             # apk的launcherActivity
             'appActivity': 'com.ycig.app.facility.MainActivity',
             # unicodeKeyboard是使用unicode编码方式发送字符串
-            'unicodeKeyboard': True,
-            # resetKeyboard是将键盘隐藏起来
-            'resetKeyboard': True
+            # 'unicodeKeyboard': True,
+            # # resetKeyboard是将键盘隐藏起来
+            # 'resetKeyboard': True
             }
 driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub', desired_caps)
 

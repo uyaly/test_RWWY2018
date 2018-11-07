@@ -50,7 +50,7 @@ class ExcelUtil:
 
 if __name__ == "__main__":
     # 注意：此代码if以上的勿乱改，调用此方法叧需修改两个参数，一个是excelPath存放xlsx的路径，另外一个是sheetName的值
-    filePath = r'E:\PycharmProjects\test_RWWY\drivers\test.xlsx'
+    filePath = r'E:\PycharmProjects\test_RWWY\data\testdata.xlsx'
     sheetName = '1'
     print ExcelUtil.dict_data(filePath, sheetName)
 

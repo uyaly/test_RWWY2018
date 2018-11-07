@@ -18,7 +18,7 @@ class setup(unittest.TestCase):
                     # 这里是声明android还是ios的环境
                     'platformname': 'android',
                     # 手机设备名称，通过adb devices查看
-                    'devicename': '11642f40',
+                    'devicename': 'cc2ae2f4', # 公司 cc2ae2f4，自己 11642f40
                     # android系统的版本号
                     'platformversion': '6.0.1',
                     # apk包名
@@ -92,8 +92,8 @@ class setup(unittest.TestCase):
         try:
             assert self.driver.find_elements_by_class_name("android.view.view")[4].get_attribute("name") == self.basenum, "新增基站未找到"
             print("新增基站成功")
-        except AssertionError,msg:
-            print msg
+        except:
+            pass
 
     @classmethod
     def tearDownClass(self):

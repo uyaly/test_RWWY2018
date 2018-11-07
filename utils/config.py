@@ -7,7 +7,7 @@ import ddt
 
 BASE_PATH = os.path.abspath(os.path.dirname(os.path.abspath(__file__)) + '\..')
 CONFIG_FILE = BASE_PATH + '\\config\\conf.yaml'
-DATA_FILE = BASE_PATH + '\\data\\test.xlsx'
+DATA_FILE = BASE_PATH + '\\data\\testdata.xlsx'
 DRIVER_PATH = BASE_PATH + '\\drivers\\'
 LOG_PATH = BASE_PATH + '\\report\\'
 sheetName = "original"
