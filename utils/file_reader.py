@@ -37,23 +37,17 @@ class ExcelUtil:
             print("总行数小亍1")
         else:
             r = []
-            j=1
             for i in range(self.rowNum-1):
                 s = {}
                 # 从第二行取对应values值
-                values = self.table.row_values(j)
+                values = self.table.row_values(i+1)
                 for x in range(self.colNum):
                     s[self.keys[x]] = values[x]
                 r.append(s)
-                j+=1
-                return r
+            return r
 
 if __name__ == "__main__":
     # 注意：此代码if以上的勿乱改，调用此方法叧需修改两个参数，一个是excelPath存放xlsx的路径，另外一个是sheetName的值
     filePath = r'E:\PycharmProjects\test_RWWY\data\testdata.xlsx'
-    sheetName = '1'
-    print ExcelUtil.dict_data(filePath, sheetName)
-
-
-
-    pass
+    sheetName = 'original'
+    print ExcelUtil().dict_data(filePath, sheetName)

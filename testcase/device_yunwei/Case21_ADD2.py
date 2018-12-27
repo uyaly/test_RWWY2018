@@ -5,9 +5,9 @@ import ddt
 import time
 from appium import webdriver
 from utils.config import Config
-from time import sleep
-from appium.webdriver.common.touch_action import TouchAction
+from utils.config import XlsData
 from utils.log1 import Log
+
 import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
@@ -18,7 +18,7 @@ desired_caps = {
             # 这里是声明android还是ios的环境
             'platformName': 'Android',
             # 手机设备名称，通过adb devices查看
-            'devicename': 'cc2ae2f4', # 公司 cc2ae2f4，自己 11642f40
+            'deviceName': 'cc2ae2f4',   # 公司 cc2ae2f4，自己 11642f40
             # android系统的版本号
             'platformVersion': '6.0.1',
             # apk包名
@@ -26,21 +26,21 @@ desired_caps = {
             # apk的launcherActivity
             'appActivity': 'com.ycig.app.facility.MainActivity',
             # unicodeKeyboard是使用unicode编码方式发送字符串
-            'unicodeKeyboard': True,
-            # resetKeyboard是将键盘隐藏起来
-            'resetKeyboard': True
+            # 'unicodeKeyboard': True,
+            # # resetKeyboard是将键盘隐藏起来
+            # 'resetKeyboard': True
             }
 driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub', desired_caps)
 
 username = Config().get('ADMIN')
 psw = Config().get('PASSWORD')
-rodnum = Config().get('RODNUM')
+rodnum = XlsData()
 basenum = Config().get('BASENUM')
+# rodnum = XlsData().get('RODNUM')
+# basenum = XlsData().get('BASENUM')
 # 登录
 try:
     time.sleep(2)
-    # 允许
-    driver.find_element_by_name("允许").click()
     # driver.wait_activity(".base.ui.MainActivity", 5)
     # driver.find_element_by_id("username").clear()
     loginpage = driver.find_elements_by_class_name("android.widget.EditText")
@@ -59,9 +59,9 @@ driver.find_elements_by_class_name("android.view.View")[5].click()
 driver.find_element_by_accessibility_id("杆号管理").click()
 driver.find_element_by_accessibility_id("添加杆号").click()
 time.sleep(1)
-driver.find_elements_by_class_name("android.widget.EditText")[0].send_keys(rodnum)  # 输入杆号
-driver.find_element_by_accessibility_id("确定").click()
-# driver.find_element_by_accessibility_id("添加下一个").click()
+for i in range(len(rodnum)):
+    driver.find_elements_by_class_name("android.widget.EditText")[0].send_keys(rodnum[i])  # 输入杆号
+    driver.find_element_by_accessibility_id("添加下一个").click()
 
 time.sleep(2)
 # 返回
@@ -87,8 +87,7 @@ driver.tap([(366,1812),])
 time.sleep(2)
 driver.swipe(100, 1000, 100, 50,0)  # 滑动
 driver.find_elements_by_class_name("android.widget.EditText")[5].send_keys("v 1.0")  # 软件版本
-driver.find_element_by_accessibility_id("确定").click()
-# driver.find_element_by_accessibility_id("添加下一个").click()
+driver.find_element_by_accessibility_id("添加下一个").click()
 time.sleep(5)
 # 判断
 try:

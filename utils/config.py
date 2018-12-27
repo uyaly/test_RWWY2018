@@ -24,16 +24,15 @@ class Config:
 class XlsData:
     u'''读取xls数据'''
     def __init__(self):
-        self.xlsdata = ExcelUtil(DATA_FILE, sheetName)
-        self.testData = self.xlsdata.dict_data()
-        print self.testData
+        self.xlsdata = ExcelUtil().dict_data(DATA_FILE, sheetName)
+        print self.xlsdata
 
     def get(self, element, index=0):
         # print "列表长度：" + str(len(self.xlsdata))
         # for index in self.testData:
         #     if self.testData[index] == element:
         #         print self.testData[index+1]
-        return self.testData[index].get(element)
+        return self.xlsdata[index].get(element)
 # 执行测试主函数
 if __name__ == '__main__':
     # 执行main全局方法，将会执行上述所有以test开头的测试方法

@@ -18,7 +18,7 @@ class setup(unittest.TestCase):
                     # 这里是声明android还是ios的环境
                     'platformname': 'android',
                     # 手机设备名称，通过adb devices查看
-                    'devicename': 'cc2ae2f4', # 公司 cc2ae2f4，自己 11642f40
+                    'deviceName': 'cc2ae2f4', # 公司 cc2ae2f4，自己 11642f40
                     # android系统的版本号
                     'platformversion': '6.0.1',
                     # apk包名
