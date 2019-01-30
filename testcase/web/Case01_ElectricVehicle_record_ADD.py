@@ -6,6 +6,7 @@ from selenium import webdriver
 from pageobject.Page_Login import Page_Login
 from pageobject.Page_main import Page_main
 from pageobject.Page_ElectricVehicle_record import ElectricVehicle_record
+from selenium.webdriver.common.keys import Keys
 from utils.config import Config
 from utils.log1 import Log
 import time
@@ -54,7 +55,20 @@ class record_ADD(unittest.TestCase):
         # 新增页面输入项
         self.EVRecord.input_telephone(Phone)  # 手机号
         time.sleep(2)
-        self.EVRecord.input_chipId(chipId)  # 芯片编号
+        # self.EVRecord.input_chipId(chipId)  # 芯片编号
+        self.driver.find_elements_by_class_name("btn-primary")[0].click()  # 点击 读卡 按钮
+        self.driver.find_elements_by_class_name("btn-primary")[2].click()  # 点击 读卡 按钮
+        # self.driver.find_element_by_tag_name(u"读卡").click()1
+        self.driver.find_element_by_id("readChipId").send_keys("0123001")
+        time.sleep(10)
+        # self.driver.send_keys(Keys.NUMPAD1)
+        # self.send_keys(Keys.NUMPAD1)
+        # self.send_keys(Keys.NUMPAD1)
+        # self.send_keys(Keys.NUMPAD1)
+        # self.send_keys(Keys.NUMPAD1)
+        # self.send_keys(Keys.NUMPAD1)
+        # self.send_keys(Keys.NUMPAD1)
+        # self.send_keys(Keys.NUMPAD1)
         self.EVRecord.select_Installpoint()  # 安装点
         self.EVRecord.select_region2()  # 区域-市
         self.EVRecord.select_region3()  # 区域-区
